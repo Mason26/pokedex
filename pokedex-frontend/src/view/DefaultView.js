@@ -1,9 +1,12 @@
-import "./DefaultView";
+import React, { Component } from "react";
+import PokedexLayout from "../components/PokedexLayout";
 
-export default function DefaultView() {
-  return (
-    <div className="App">
-      <header className="App-header"></header>
-    </div>
-  );
+export default class DefaultView extends Component {
+  render() {
+    return (
+      <div className="default-layout">
+        <PokedexLayout />
+      </div>
+    );
+  }
 }

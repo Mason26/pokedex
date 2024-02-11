@@ -1,10 +1,11 @@
-import logo from "./logo.svg";
 import "./App.css";
+import PokedexLayout from "./components/PokedexLayout";
+import DefaultView from "./view/DefaultView";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">Pokedex!</header>
+    <div>
+      <DefaultView></DefaultView>
     </div>
   );
 }

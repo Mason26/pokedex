@@ -19,7 +19,11 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-    testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
+
+}
+
+tasks.withType(JavaCompile) {
+    options.compilerArgs << "-parameters"
 }
 
 tasks.named('test') {

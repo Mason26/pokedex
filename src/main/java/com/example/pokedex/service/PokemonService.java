@@ -12,8 +12,7 @@ public class PokemonService {
         this.pokemonRestClient = pokemonRestClient;
     }
 
-    public PokemonDTO getPokemon(Object pokemonIdentifier) throws Exception {
+    public PokemonDTO getPokemon(Object pokemonIdentifier) {
         return pokemonRestClient.getPokemonByIdentifier(pokemonIdentifier);
     }
-
 }

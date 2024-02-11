@@ -1,7 +1,10 @@
 package com.example.pokedex.client;
 import java.net.URI;
+
+import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
+@Component
 public class RestClient<T> {
 
     protected RestTemplate restTemplate;

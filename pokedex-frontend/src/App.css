@@ -1,3 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap");
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
 .App {
   text-align: center;
 }
@@ -52,4 +58,128 @@
   background-color: red;
   min-width: 50vh;
   min-height: 70vh;
+}
+
+.pokeball {
+  /* position: sticky; */
+  position: relative;
+  /* bottom: 50%;
+  right: 50%; */
+  height: 20vh;
+  width: 20vh;
+  background: linear-gradient(
+    -45deg,
+    rgb(235, 235, 235),
+    rgb(231, 231, 231) 47%,
+    rgb(0, 0, 0) 47%,
+    rgb(0, 0, 0) 53%,
+    red 53%
+  );
+  border-radius: 50%;
+  animation-name: rotate;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.pokeball:after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255, 255, 255, 0) 0%,
+    #000000 92%,
+    rgb(255, 255, 255) 100%
+  );
+
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* .pokeball::before,
+.pokeball::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 30px;
+  background: #000;
+}
+.pokeball::after {
+  top: auto;
+  bottom: 0;
+} */
+
+.inside-ball {
+  position: absolute;
+  background: #a9aaab;
+  border-radius: 50%;
+  height: 5vh;
+  width: 5vh;
+  top: 32%;
+  left: 32%;
+  border: 10px solid black;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(-360deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* .pokeball-image {
+  height: 20vh;
+  width: 20vh;
+  animation-name: rotate;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+} */
+
+.pokemon-card {
+  aspect-ratio: 9/16;
+  /* width: 50%;
+  height: 50%; */
+  background-color: rgb(20, 20, 20);
+  left: 25%;
+  border-radius: 15px;
+  padding: 15px;
+  box-shadow: 0 4px 8px 0 rgb(20, 122, 255), 0 6px 20px 0 rgba(20, 122, 255, 1);
+  /* box-shadow: 0 4px 8px 0 rgb(255, 255, 255),
+    0 6px 20px 0 rgba(255, 255, 255, 1); */
+}
+
+.ability-container {
+  display: block;
+}
+
+.pokemon-name {
+  text-transform: capitalize;
+}
+
+.pokemon-input-name {
+  color: white;
+}
+
+.search-container {
+  position: absolute;
+  top: 15px;
+  background-color: #e9e9e9;
+  padding: 5vh;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px 0 rgb(0, 0, 0), 0 6px 20px 0 rgb(0, 0, 0);
+}
+
+.search-button {
+  width: 100%;
+  position: absolute;
+  top: 122px;
 }

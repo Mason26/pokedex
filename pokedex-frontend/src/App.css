@@ -61,12 +61,14 @@ body {
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  z-index: 2;
 }
 
 .pokedex-container {
   background-color: red;
   min-width: 50vh;
   min-height: 70vh;
+  z-index: 2;
 }
 
 .pokeball {
@@ -154,6 +156,7 @@ body {
 } */
 
 .pokemon-card {
+  z-index: 2;
   /* aspect-ratio: 9/16; */
   width: 80%;
   /* height: 50%; */
@@ -168,18 +171,18 @@ body {
 }
 
 .ability-container {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
+  /* display: flex; */
+  /* justify-content: space-evenly;
+  align-items: center; */
   font-size: 10pt;
+  text-transform: capitalize;
 }
 
 .pokemon-name {
   text-transform: capitalize;
   text-align: center;
   font-size: 30pt;
-  background-color: var(--lightblue);
-  border-radius: 15px;
+  flex: 3;
 }
 
 .pokemon-input-name {
@@ -194,16 +197,74 @@ body {
   box-shadow: 0 4px 8px 0 rgb(0, 0, 0), 0 6px 20px 0 rgb(0, 0, 0);
   display: flex;
   margin: 3vh;
+  z-index: 2;
 }
 
 .move-container {
   font-size: 10pt;
+  text-transform: capitalize;
 }
 
 .sprite-container {
   display: flex;
+  justify-content: space-evenly;
+}
+
+.single-sprite-container {
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  /* background-color: #2f70af; */
+  border-radius: 15px;
+  /* box-shadow: 0 0 4px 4px var(--lightblue); */
+  text-transform: capitalize;
+  padding: 8px;
+}
+
+.sprite-image {
+  width: 170px;
+  height: auto;
+}
+
+.sprite-image:hover {
+  cursor: pointer;
+}
+
+.sprite-modal {
+  width: 20%;
+  height: 20%;
+  z-index: 3;
+}
+
+.enlarged-sprite-image {
+  width: 400px;
+  height: auto;
+  position: absolute;
+  background-color: var(--lightblue);
+  border-radius: 10%;
+  top: 100%;
+  left: 200%;
+  animation: EnlargedSprite 0.2s ease-in-out;
+}
+
+@keyframes EnlargedSprite {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(100%);
+  }
 }
 
 .sprite-name {
   font-size: 10pt;
+}
+
+.pokemon-header {
+  display: flex;
+  justify-content: space-evenly;
+  background-color: var(--lightblue);
+  border-radius: 15px;
+  padding: 10px;
+  flex: 5;
 }

@@ -3,6 +3,8 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import PokeballLoadingSpinner from "../components/PokeballLoadingSpinner";
 import axios from "axios";
+import { Modal } from "@mui/material";
+import Box from "@mui/material/Box";
 
 const api = axios.create({
   baseURL: "https://pokeapi.co/api/v2/pokemon/",
@@ -11,9 +13,11 @@ const api = axios.create({
 export default function DefaultView(props) {
   const [pokemonName, setPokemonName] = useState("");
   const [data, setData] = useState(null);
-  const [image, setImage] = useState(null);
   const [loading, setLoading] = useState(false);
   const [showMoves, setShowMoves] = useState(false);
+  const [showAbilities, setShowAbilities] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedSprite, setSelectedSprite] = useState("");
 
   async function getAllData() {
     setLoading(true);
@@ -30,9 +34,14 @@ export default function DefaultView(props) {
 
   function getAbilities() {
     return (
-      <div className="ability-container">
+      <div>
+        <div>Abilites</div>
         {data.generalData.abilities.map((ability, index) => {
-          return <div key={index}>{formatText(ability.ability.name)}</div>;
+          return (
+            <div key={index} className="ability-container">
+              {formatText(ability.ability.name)}
+            </div>
+          );
         })}
       </div>
     );
@@ -47,13 +56,46 @@ export default function DefaultView(props) {
             .map((sprite, index) => {
               if (data.generalData.sprites[sprite] !== null) {
                 return (
-                  <div key={index}>
-                    <img src={data.generalData.sprites[sprite]} alt="Pokemon" />
+                  <div key={index} className="single-sprite-container">
+                    <img
+                      src={data.generalData.sprites[sprite]}
+                      alt="Pokemon"
+                      className="sprite-image"
+                      onClick={() =>
+                        handleModal(data.generalData.sprites[sprite])
+                      }
+                    />
                     <div className="sprite-name">{formatText(sprite)}</div>
                   </div>
                 );
               }
             })}
+        {renderModal(selectedSprite)}
+      </div>
+    );
+  }
+
+  function handleModal(value) {
+    console.log(value);
+    setSelectedSprite(value);
+    setModalOpen(true);
+  }
+
+  function renderModal(sprite) {
+    return (
+      <div>
+        <Modal
+          open={modalOpen}
+          onClose={() => setModalOpen(false)}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+          className="sprite-modal"
+        >
+          <div>
+            {/* <Button>X</Button> */}
+            <img src={sprite} alt="Pokemon" className="enlarged-sprite-image" />
+          </div>
+        </Modal>
       </div>
     );
   }
@@ -85,6 +127,7 @@ export default function DefaultView(props) {
   function getMoves() {
     return (
       <div>
+        <div>Moves</div>
         {data.generalData.moves.map((move, index) => {
           return (
             <div key={index} className="move-container">
@@ -101,14 +144,27 @@ export default function DefaultView(props) {
       {searchContainer()}
       {data ? (
         <div className="pokemon-card">
-          <div className="pokemon-name">{data.generalData.name}</div>
+          <div className="pokemon-header">
+            <div className="pokemon-name">{data.generalData.name}</div>
+            <Button
+              variant="contained"
+              onClick={() => setShowMoves(!showMoves)}
+            >
+              Moves
+            </Button>
+            <Button
+              variant="contained"
+              onClick={() => setShowAbilities(!showAbilities)}
+            >
+              Abilities
+            </Button>
+          </div>
           <br />
-          {getAbilities()}
           {getSprites()}
-          <Button variant="contained" onClick={() => setShowMoves(!showMoves)}>
-            Moves
-          </Button>
+          <br />
           {showMoves === false ? <Fragment></Fragment> : getMoves()}
+
+          {showAbilities === false ? <Fragment></Fragment> : getAbilities()}
         </div>
       ) : (
         <div>{loading && <PokeballLoadingSpinner />}</div>

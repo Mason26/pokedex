@@ -1,0 +1,53 @@
+:root {
+  --blending: hard-light;
+}
+
+.bouncing-circle {
+  width: 500px;
+  height: 500px;
+  /* background-color: blue; */
+  border-radius: 50%;
+  position: absolute;
+  opacity: 0.3;
+  background-size: 200% 200%;
+}
+
+.blue {
+  background: radial-gradient(
+      circle at center,
+      blue 5%,
+      transparent,
+      rgba(14, 47, 78, 0) 80%
+    )
+    no-repeat;
+}
+
+.red {
+  background: radial-gradient(
+      circle at center,
+      rgb(255, 0, 128) 5%,
+      transparent,
+      rgba(14, 47, 78, 0) 80%
+    )
+    no-repeat;
+}
+
+.purple {
+  background: radial-gradient(
+      circle at center,
+      rgb(255, 0, 255) 5%,
+      transparent,
+      rgba(14, 47, 78, 0) 90%
+    )
+    no-repeat;
+}
+
+.white {
+  background: radial-gradient(
+      circle at center,
+      rgb(0, 17, 255) 5%,
+      transparent,
+      rgba(14, 47, 78, 0) 100%
+    )
+    no-repeat;
+}
